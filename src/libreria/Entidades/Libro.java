@@ -35,6 +35,7 @@ public class Libro implements Serializable {
     private Editorial editorial;
 
     public Libro() {
+        this.alta = Boolean.TRUE;
     }
 
     public Libro(String titulo, Integer anio, Integer ejemplares, Autor autor, Editorial editorial) {
@@ -134,4 +135,10 @@ public class Libro implements Serializable {
         this.editorial = editorial;
     }
 
+    @Override
+    public String toString() {
+        return "Libro{" + "isbn=" + isbn + ", titulo=" + titulo + ", anio=" + anio + ", ejemplares=" + ejemplares + ", ejemplaresPrestados=" + ejemplaresPrestados + ", ejemplaresRestantes=" + ejemplaresRestantes + ", alta=" + alta + ", autor=" + autor.getNombre() + ", editorial=" + editorial.getNombre() + '}';
+    }
+
+    
 }

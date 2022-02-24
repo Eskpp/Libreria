@@ -31,6 +31,7 @@ public class Editorial implements Serializable {
     }
 
     public Editorial() {
+        this.alta = Boolean.TRUE;
     }
 
     public Integer getId() {
@@ -56,5 +57,11 @@ public class Editorial implements Serializable {
     public void setAlta(Boolean alta) {
         this.alta = alta;
     }
+
+    @Override
+    public String toString() {
+        return "Editorial{" + "id=" + id + ", nombre=" + nombre + ", alta=" + alta + '}';
+    }
+    
     
 }

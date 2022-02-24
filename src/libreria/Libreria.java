@@ -5,6 +5,7 @@
  */
 package libreria;
 
+
 /**
  *
  * @author Sanat
@@ -15,7 +16,16 @@ public class Libreria {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+        Menu menu = new Menu();
+        
+        do {            
+            
+        } while (menu.menu());
+        
+//        Control servicios = new Control();
+//        servicios.geteSer().darAlta(servicios.geteSer().buscarPorNombre("Montecarlo"));
+        
     }
     
 }

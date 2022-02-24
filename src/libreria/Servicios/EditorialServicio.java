@@ -44,7 +44,20 @@ public class EditorialServicio {
         Scanner leer = new Scanner(System.in).useDelimiter("\n");
         System.out.print("Ingrese nombre de la editorial: ");
         String nombre = leer.next();
-        return persistirEditorial(nombre);
+        if (buscarPorNombre(nombre) == null) {
+            return persistirEditorial(nombre);
+        } else {
+            return buscarPorNombre(nombre);
+        }
+    } 
+    
+    public Editorial crearEditorial(String nombre) {
+        
+        if (buscarPorNombre(nombre) == null) {
+            return persistirEditorial(nombre);
+        } else {
+            return buscarPorNombre(nombre);
+        }
     }
 
     public Editorial persistirEditorial(String nombre) {
@@ -69,12 +82,38 @@ public class EditorialServicio {
         }
     }
 
+    public Editorial buscarPorId() {
+        Scanner leer = new Scanner(System.in).useDelimiter("\n");
+        System.out.println("Ingrese ID de la editorial");
+        int id = leer.nextInt();
+        try {
+            Editorial editorial = DAO.buscarPorId(id);
+            return editorial;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+
     public Editorial buscarPorNombre(String nombre) {
         try {
             Editorial editorial = DAO.buscarPorNombre(nombre);
             return editorial;
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            return null;
+        }
+    }
+
+    public Editorial buscarPorNombre() {
+        Scanner leer = new Scanner(System.in).useDelimiter("\n");
+        System.out.println("Ingrese nombre de la editorial");
+        String nombre = leer.next();
+        try {
+            Editorial editorial = DAO.buscarPorNombre(nombre);
+            return editorial;
+        } catch (Exception e) {
+//            System.out.println(e.getMessage());
             return null;
         }
     }
@@ -85,6 +124,12 @@ public class EditorialServicio {
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return null;
+        }
+    }
+    
+    public void mostrarEditoriales(){
+        for (Editorial editorial : listarEditoriales()) {
+            System.out.println(editorial);
         }
     }
 

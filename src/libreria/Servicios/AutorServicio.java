@@ -44,7 +44,21 @@ public class AutorServicio {
         Scanner leer = new Scanner(System.in).useDelimiter("\n");
         System.out.print("Ingrese nombre del autor: ");
         String nombre = leer.next();
-        return persistirAutor(nombre);
+        
+        if (buscarPorNombre(nombre) == null) {
+            return persistirAutor(nombre);
+        } else {
+            return buscarPorNombre(nombre);
+        }
+    }
+    
+    public Autor crearAutor(String nombre) {
+        
+        if (buscarPorNombre(nombre) == null) {
+            return persistirAutor(nombre);
+        } else {
+            return buscarPorNombre(nombre);
+        }
     }
 
     public Autor persistirAutor(String nombre) {
@@ -69,7 +83,33 @@ public class AutorServicio {
         }
     }
 
+    public Autor buscarPorId() {
+        Scanner leer = new Scanner(System.in).useDelimiter("\n");
+        System.out.println("Ingrese ID del autor");
+        int id = leer.nextInt();
+        try {
+            Autor autor = DAO.buscarPorId(id);
+            return autor;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+
     public Autor buscarPorNombre(String nombre) {
+        try {
+            Autor autor = DAO.buscarPorNombre(nombre);
+            return autor;
+        } catch (Exception e) {
+//            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+
+    public Autor buscarPorNombre() {
+        Scanner leer = new Scanner(System.in).useDelimiter("\n");
+        System.out.println("Ingrese nombre del autor");
+        String nombre = leer.next();
         try {
             Autor autor = DAO.buscarPorNombre(nombre);
             return autor;
@@ -85,6 +125,12 @@ public class AutorServicio {
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return null;
+        }
+    }
+    
+    public void mostrarAutores(){
+        for (Autor autor : listarAutores()) {
+            System.out.println(autor);
         }
     }
 

@@ -25,6 +25,7 @@ public class Autor implements Serializable {
     private Boolean alta;
 
     public Autor() {
+        this.alta = Boolean.TRUE;
     }
 
     public Autor(Integer id, String nombre, Boolean alta) {
@@ -56,5 +57,12 @@ public class Autor implements Serializable {
     public void setAlta(Boolean alta) {
         this.alta = alta;
     }
+
+    @Override
+    public String toString() {
+        return "Autor{" + "id=" + id + ", nombre=" + nombre + ", alta=" + alta + '}';
+    }
+    
+    
     
 }
